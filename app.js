@@ -10,11 +10,17 @@ fs.readFile(dataPath, 'utf8', (err, data) => {
         return;
     }
     
-    // Convert text back to usable list
+    // Convert text back to usable
+    // Convert text back to usable
     const messages = JSON.parse(data);
+
+    // DYNAMIC LOGIC: Automatically picks a random index based on list length
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    const selectedMessage = messages[randomIndex];
     
     console.log("------------------------------------");
     console.log("LIVING LOVED - DAILY MESSAGE:");
-    console.log(messages[1].text);
+    console.log(selectedMessage.text);
+    console.log(`Category: ${selectedMessage.category}`); // Verifies the schema you just synced
     console.log("------------------------------------");
 });

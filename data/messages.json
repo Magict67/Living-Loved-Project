@@ -1,7 +1,12 @@
 [
     {
         "id": 1,
-        "test": "You are valued and capable.",
+        "text": "You are valued and capable.",
+        "category": "encouragement"
+    },
+    {
+        "id": 2,
+        "text": "Your contribution matters to the world.",
         "category": "encouragement"
     }
 ]

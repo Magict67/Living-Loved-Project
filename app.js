@@ -15,6 +15,6 @@ fs.readFile(dataPath, 'utf8', (err, data) => {
     
     console.log("------------------------------------");
     console.log("LIVING LOVED - DAILY MESSAGE:");
-    console.log(messages[0].text);
+    console.log(messages[1].text);
     console.log("------------------------------------");
 });

@@ -8,5 +8,10 @@
         "id": 2,
         "text": "Your contribution matters to the world.",
         "category": "encouragement"
+    },
+    {
+        "id": 3,
+        "text": "Persistence guarantees that results are inevitable.",
+        "category": "motivation"
     }
 ]

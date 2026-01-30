@@ -21,6 +21,6 @@ fs.readFile(dataPath, 'utf8', (err, data) => {
     console.log("------------------------------------");
     console.log("LIVING LOVED - DAILY MESSAGE:");
     console.log(selectedMessage.text);
-    console.log(`Category: ${selectedMessage.category.toUpperCase()}`); // Verify current sync
+    console.log(`CATEGORY: ${selectedMessage.category.toUpperCase()}`); // Verify current sync
     console.log("------------------------------------");
 });

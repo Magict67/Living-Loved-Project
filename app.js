@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-// Path to your data
+// Path to data
 const dataPath = './data/messages.json';
 
 // message reader
@@ -10,17 +10,17 @@ fs.readFile(dataPath, 'utf8', (err, data) => {
         return;
     }
     
-    // Convert text back to usable
-    // Convert text back to usable
+    
+    // Convert text
     const messages = JSON.parse(data);
 
-    // DYNAMIC LOGIC: Automatically picks a random index based on list length
+    // LOGIC: Auto picks random index depends on list length
     const randomIndex = Math.floor(Math.random() * messages.length);
     const selectedMessage = messages[randomIndex];
     
     console.log("------------------------------------");
     console.log("LIVING LOVED - DAILY MESSAGE:");
     console.log(selectedMessage.text);
-    console.log(`Category: ${selectedMessage.category}`); // Verifies the schema you just synced
+    console.log(`Category: ${selectedMessage.category.toUpperCase()}`); // Verify current sync
     console.log("------------------------------------");
 });

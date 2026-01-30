@@ -1,0 +1,20 @@
+{
+  "name": "living-loved-project",
+  "version": "1.0.0",
+  "description": "A Node.js application that delivers daily inspirational messages by asynchronously reading a JSON database and utilizing a randomization algorithm for selection.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Magict67/Living-Loved-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Magict67/Living-Loved-Project/issues"
+  },
+  "homepage": "https://github.com/Magict67/Living-Loved-Project#readme"
+}

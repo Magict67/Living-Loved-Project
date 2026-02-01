@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Magict67/Living-Loved-Project/issues"
   },
-  "homepage": "https://github.com/Magict67/Living-Loved-Project#readme"
+  "homepage": "https://github.com/Magict67/Living-Loved-Project#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

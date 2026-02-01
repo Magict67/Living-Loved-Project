@@ -7,6 +7,19 @@
 </head>
 <body>
     <h1>Living Loved Project</h1>
-    <p>Status: Presentation Layer Initialized.</p>
+    <div id="message-container">
+        <p id="message-text">Loading daily message...</p>
+        <p id="message-category"></p>
+    </div>
+
+    <script>
+        fetch('/api/daily-message')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message-text').innerText = data.text;
+                document.getElementById('message-category').innerText = `Category: ${data.category}`;
+            })
+            .catch(error => console.error('Error fetching message:', error));
+    </script>
 </body>
 </html>

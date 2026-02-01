@@ -1,26 +1,26 @@
+const express = require('express');
 const fs = require('fs');
+const app = express();
+const port = 3000;
 
-// Path to data
+// server allow view in'public' folder
+app.use(express.static('public'));
+
 const dataPath = './data/messages.json';
 
-// message reader
-fs.readFile(dataPath, 'utf8', (err, data) => {
-    if (err) {
-        console.error("Critical Error: Could not find the data path.", err);
-        return;
-    }
-    
-    
-    // Convert text
-    const messages = JSON.parse(data);
+// Route for random message (bk end)
+app.get('/api/daily-message', (req, res) => {
+    fs.readFile(dataPath, 'utf8', (err, data) => {
+        if (err) {
+            res.status(500).send("Error reading data");
+            return;
+        }
+        const messages = JSON.parse(data);
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        res.json(messages[randomIndex]);
+    });
+});
 
-    // LOGIC: Auto picks random index depends on list length
-    const randomIndex = Math.floor(Math.random() * messages.length);
-    const selectedMessage = messages[randomIndex];
-    
-    console.log("------------------------------------");
-    console.log("LIVING LOVED - DAILY MESSAGE:");
-    console.log(selectedMessage.text);
-    console.log(`CATEGORY: ${selectedMessage.category.toUpperCase()}`); // Verify current sync
-    console.log("------------------------------------");
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 });

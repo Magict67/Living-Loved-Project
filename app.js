@@ -4,8 +4,9 @@ const app = express();
 const port = 3000;
 
 app.use(express.static('public'));
-
+app.use(express.json());
 const dataPath = './data/messages.json';
+const postsPath = './data/posts.json';
 
 app.get('/api/daily-message', (req, res) => {
     fs.readFile(dataPath, 'utf8', (err, data) => {

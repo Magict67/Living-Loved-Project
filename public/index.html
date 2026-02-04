@@ -12,7 +12,15 @@
         <p id="message-text">Loading daily message...</p>
         <p id="message-category"></p>
     </div>
-
+<div id="forum-container">
+        <h2>Community Forum</h2>
+        <form id="post-form">
+            <input type="text" id="username" placeholder="Your Name" required>
+            <textarea id="content" placeholder="Share something encouraging..." required></textarea>
+            <button type="submit">Post to Forum</button>
+        </form>
+        <div id="posts-display"></div>
+    </div>
     <script>
         fetch('/api/daily-message')
             .then(response => response.json())
@@ -21,6 +29,24 @@
                 document.getElementById('message-category').innerText = `Category: ${data.category}`;
             })
             .catch(error => console.error('Error fetching message:', error));
+document.getElementById('post-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const content = document.getElementById('content').value;
+
+            fetch('/api/posts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, content, timestamp: new Date() })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Post saved successfully!');
+                    document.getElementById('post-form').reset();
+                }
+            })
+            .catch(error => console.error('Error posting:', error));
+        });
     </script>
 </body>
 </html>

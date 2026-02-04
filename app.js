@@ -20,6 +20,25 @@ app.get('/api/daily-message', (req, res) => {
     });
 });
 
+app.post('/api/posts', (req, res) => {
+    const newPost = req.body;
+    fs.readFile(postsPath, 'utf8', (err, data) => {
+        if (err) {
+            res.status(500).send("Error reading posts");
+            return;
+        }
+        const posts = JSON.parse(data);
+        posts.push(newPost);
+        fs.writeFile(postsPath, JSON.stringify(posts, null, 2), (err) => {
+            if (err) {
+                res.status(500).send("Error saving post");
+                return;
+            }
+            res.status(201).send("Post saved");
+        });
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });

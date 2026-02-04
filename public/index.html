@@ -42,11 +42,35 @@ document.getElementById('post-form').addEventListener('submit', (e) => {
             .then(response => {
                 if (response.ok) {
                     alert('Post saved successfully!');
+                    loadPosts();
                     document.getElementById('post-form').reset();
                 }
             })
             .catch(error => console.error('Error posting:', error));
         });
+        function loadPosts() {
+            fetch('/api/posts')
+                .then(response => response.json())
+                .then(posts => {
+                    const display = document.getElementById('posts-display');
+                    display.innerHTML = ''; // Clear old posts
+                    posts.reverse().forEach(post => {
+                        const postDiv = document.createElement('div');
+                        postDiv.className = 'post';
+                        postDiv.innerHTML = `
+                            <strong>${post.username}</strong>
+                            <p>${post.content}</p>
+                            <small>${new Date(post.timestamp).toLocaleString()}</small>
+                            <hr>
+                        `;
+                        display.appendChild(postDiv);
+                    });
+                })
+                .catch(error => console.error('Error loading posts:', error));
+        }
+
+        // Run when page loads
+        loadPosts();
     </script>
 </body>
 </html>

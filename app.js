@@ -38,7 +38,15 @@ app.post('/api/posts', (req, res) => {
         });
     });
 });
-
+app.get('/api/posts', (req, res) => {
+    fs.readFile(postsPath, 'utf8', (err, data) => {
+        if (err) {
+            res.status(500).send("Error reading posts");
+            return;
+        }
+        res.json(JSON.parse(data));
+    });
+});
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });

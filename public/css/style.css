@@ -46,13 +46,6 @@ header p {
     width: 100%;
 }
 
-h1 {
-    color: rgb(44, 62, 80);
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    font-weight: 300;
-}
-
 #message-text {
     font-size: 1.4rem;
     color: rgb(52, 73, 94);

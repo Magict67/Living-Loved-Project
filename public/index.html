@@ -61,7 +61,6 @@ document.getElementById('post-form').addEventListener('submit', (e) => {
                             <strong>${post.username}</strong>
                             <p>${post.content}</p>
                             <small>${new Date(post.timestamp).toLocaleString()}</small>
-                            <hr>
                         `;
                         display.appendChild(postDiv);
                     });

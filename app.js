@@ -40,11 +40,14 @@ app.post('/api/posts', (req, res) => {
 });
 app.get('/api/posts', (req, res) => {
     fs.readFile(postsPath, 'utf8', (err, data) => {
-        if (err) {
-            res.status(500).send("Error reading posts");
-            return;
+       if (err || !data.trim()) {
+            return res.json([]); 
         }
-        res.json(JSON.parse(data));
+        try {
+            res.json(JSON.parse(data));
+        } catch (e) {
+            res.json([]);
+        }
     });
 });
 app.listen(port, () => {

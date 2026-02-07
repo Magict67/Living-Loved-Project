@@ -6,6 +6,11 @@ const port = 3000;
 
 app.use(express.json());
 app.use(express.static('public'));
+app.use(session({
+    secret: 'living-loved-secret',
+    resave: false,
+    saveUninitialized: true
+}));
 const dataPath = './data/messages.json';
 const postsPath = './data/posts.json';
 

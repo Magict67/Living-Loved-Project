@@ -47,21 +47,34 @@ header p {
 }
 
 #message-text {
-    font-size: 1.4rem;
-    color: rgb(52, 73, 94);
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    color: #1e293b;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    font-weight: 500;
+}
+
+#message-text::before {
+    content: '"';
+    font-size: 3.5rem;
+    color: #3b82f6;
+    display: block;
+    height: 25px;
+    opacity: 0.3;
+    font-family: serif;
 }
 
 #message-category {
     display: inline-block;
-    padding: 5px 15px;
-    background: rgb(236, 240, 241);
-    color: rgb(127, 140, 141);
-    border-radius: 20px;
-    font-size: 0.75rem;
+    padding: 6px 16px;
+    background: #eff6ff;
+    color: #3b82f6;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.05em;
 }
 
 #post-form {

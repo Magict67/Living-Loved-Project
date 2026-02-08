@@ -14,6 +14,18 @@ app.use(session({
 const dataPath = './data/messages.json';
 const postsPath = './data/posts.json';
 const usersPath = './data/users.json';
+
+app.post('/api/register', (req, res) => {
+    const newUser = req.body;
+    fs.readFile(usersPath, 'utf8', (err, data) => {
+        const users = JSON.parse(data || '[]');
+        users.push(newUser);
+        fs.writeFile(usersPath, JSON.stringify(users, null, 2), (err) => {
+            res.status(201).send("User registered");
+        });
+    });
+});
+
 app.get('/api/daily-message', (req, res) => {
     fs.readFile(dataPath, 'utf8', (err, data) => {
         if (err) {

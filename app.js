@@ -13,7 +13,7 @@ app.use(session({
 }));
 const dataPath = './data/messages.json';
 const postsPath = './data/posts.json';
-
+const usersPath = './data/users.json';
 app.get('/api/daily-message', (req, res) => {
     fs.readFile(dataPath, 'utf8', (err, data) => {
         if (err) {

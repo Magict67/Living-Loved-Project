@@ -26,6 +26,20 @@ app.post('/api/register', (req, res) => {
     });
 });
 
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
+    fs.readFile(usersPath, 'utf8', (err, data) => {
+        const users = JSON.parse(data || '[]');
+        const user = users.find(u => u.username === username && u.password === password);
+        if (user) {
+            req.session.user = user;
+            res.send("Login successful");
+        } else {
+            res.status(401).send("Invalid credentials");
+        }
+    });
+});
+
 app.get('/api/daily-message', (req, res) => {
     fs.readFile(dataPath, 'utf8', (err, data) => {
         if (err) {

@@ -13,5 +13,25 @@
         <button type="submit">Register</button>
     </form>
     <a href="index.html">Back to Home</a>
+    <script>
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('reg-username').value;
+            const password = document.getElementById('reg-password').value;
+
+            const response = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                alert("User registered! You can now login.");
+                window.location.href = 'login.html';
+            } else {
+                alert("Registration failed.");
+            }
+        });
+    </script>
 </body>
 </html>

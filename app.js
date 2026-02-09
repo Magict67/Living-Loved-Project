@@ -39,7 +39,10 @@ app.post('/api/login', (req, res) => {
         }
     });
 });
-
+app.get('/api/logout', (req, res) => {
+    req.session.destroy();
+    res.send("Logged out");
+});
 app.get('/api/daily-message', (req, res) => {
     fs.readFile(dataPath, 'utf8', (err, data) => {
         if (err) {

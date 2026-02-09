@@ -18,7 +18,7 @@
         <p id="message-text">Loading daily message...</p>
         <p id="message-category"></p>
     </div>
-<div id="forum-container">
+<div id="forum-container" style="display: none;">
         <h2>Community Forum</h2>
         <form id="post-form">
             <input type="text" id="username" placeholder="Your Name" required>
@@ -28,6 +28,16 @@
         <div id="posts-display"></div>
     </div>
     <script>
+        // Check if logged then show/hide
+        fetch('/api/check-auth')
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('forum-container').style.display = 'block';
+                    loadPosts();
+                } else {
+                    document.getElementById('forum-container').style.display = 'none';
+                }
+            });
         fetch('/api/daily-message')
             .then(response => response.json())
             .then(data => {
@@ -73,9 +83,6 @@ document.getElementById('post-form').addEventListener('submit', (e) => {
                 })
                 .catch(error => console.error('Error loading posts:', error));
         }
-
-        // Run when page loads
-        loadPosts();
     </script>
 </body>
 </html>

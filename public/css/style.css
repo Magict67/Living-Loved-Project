@@ -55,16 +55,6 @@ header p {
     font-weight: 500;
 }
 
-#message-text::before {
-    content: '"';
-    font-size: 3.5rem;
-    color: #3b82f6;
-    display: block;
-    height: 25px;
-    opacity: 0.3;
-    font-family: serif;
-}
-
 #message-category {
     display: inline-block;
     padding: 6px 16px;

@@ -34,9 +34,15 @@
             .then(response => {
                 if (response.ok) {
                     document.getElementById('forum-container').style.display = 'block';
+                    document.getElementById('logout-link').style.display = 'inline';
+                    document.getElementById('login-link').style.display = 'none';
+                    document.getElementById('register-link').style.display = 'none';
                     loadPosts();
                 } else {
                     document.getElementById('forum-container').style.display = 'none';
+                    document.getElementById('logout-link').style.display = 'none';
+                    document.getElementById('login-link').style.display = 'inline';
+                    document.getElementById('register-link').style.display = 'inline';
                 }
             });
         fetch('/api/daily-message')

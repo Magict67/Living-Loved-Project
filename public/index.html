@@ -90,6 +90,13 @@ document.getElementById('post-form').addEventListener('submit', (e) => {
                 })
                 .catch(error => console.error('Error loading posts:', error));
         }
+        document.getElementById('logout-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            fetch('/api/logout', { method: 'POST' })
+                .then(() => {
+                    window.location.reload();
+                });
+        });
     </script>
 </body>
 </html>

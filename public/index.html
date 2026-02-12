@@ -92,7 +92,7 @@ document.getElementById('post-form').addEventListener('submit', (e) => {
         }
         document.getElementById('logout-link').addEventListener('click', (e) => {
             e.preventDefault();
-            fetch('/api/logout', { method: 'POST' })
+            fetch('/api/logout', { method: 'GET' })
                 .then(() => {
                     window.location.reload();
                 });

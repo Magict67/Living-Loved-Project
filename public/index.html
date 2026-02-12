@@ -94,7 +94,7 @@ document.getElementById('post-form').addEventListener('submit', (e) => {
             e.preventDefault();
             fetch('/api/logout', { method: 'GET' })
                 .then(() => {
-                    window.location.reload();
+                    window.location.href = '/';
                 });
         });
     </script>

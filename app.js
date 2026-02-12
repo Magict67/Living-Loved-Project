@@ -39,6 +39,13 @@ app.post('/api/login', (req, res) => {
         }
     });
 });
+app.get('/api/check-auth', (req, res) => {
+    if (req.session.user) {
+        res.sendStatus(200);
+    } else {
+        res.sendStatus(401);
+    }
+});
 app.get('/api/logout', (req, res) => {
     req.session.destroy();
     res.send("Logged out");

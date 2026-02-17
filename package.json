@@ -1,9 +1,10 @@
 {
   "name": "living-loved-project",
   "version": "1.0.0",
-  "description": "A Node.js application that delivers daily inspirational messages by asynchronously reading a JSON database and utilizing a randomization algorithm for selection.",
+  "description": "A Node.js application which presents daily inspirational messages by reading a JSON database and utilizing a random algorithm tp select.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

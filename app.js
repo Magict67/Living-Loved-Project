@@ -64,21 +64,16 @@ app.get('/api/daily-message', (req, res) => {
 
 app.post('/api/posts', (req, res) => {
     const newPost = req.body;
-    if (!req.session.user) {
-        return res.status(401).send("Please login to post");
-    }
+if (!req.session.user) return res.status(401).send("Please login to post");
+
     fs.readFile(postsPath, 'utf8', (err, data) => {
-        if (err) {
-            res.status(500).send("Error reading posts");
-            return;
-        }
+        if (err) return res.status(500).send("Error reading posts");
+        
         const posts = JSON.parse(data);
         posts.push(newPost);
+
         fs.writeFile(postsPath, JSON.stringify(posts, null, 2), (err) => {
-            if (err) {
-                res.status(500).send("Error saving post");
-                return;
-            }
+            if (err) return res.status(500).send("Error saving post");
             res.status(201).send("Post saved");
         });
     });
